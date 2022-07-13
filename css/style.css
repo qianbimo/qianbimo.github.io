@@ -666,7 +666,7 @@ pre:hover::-webkit-scrollbar-thumb:hover,
 .header-bg-color,
 .no-img-top,
 .no-swiper {
-  background: #42b983;
+  background: rgba(255,255,255,0);
   transition: all 0.3s;
 }
 .header {
@@ -769,7 +769,7 @@ pre:hover::-webkit-scrollbar-thumb:hover,
   opacity: 0;
 }
 .header .header-content .navbar .menu .menu-item .sub-menu li {
-  background: #42b983;
+  background: rgba(255,255,255,0);
   width: 140px;
   text-align: center;
   line-height: 45px;
@@ -869,6 +869,9 @@ pre:hover::-webkit-scrollbar-thumb:hover,
   .header #he-plugin-simple {
     margin-right: 0;
   }
+  .header .blog-title {
+    margin-left: 150px;
+  }
 }
 @media (max-width: 551px) {
   .header #he-plugin-simple {
@@ -900,7 +903,7 @@ pre:hover::-webkit-scrollbar-thumb:hover,
   height: 300px;
   display: flex;
   margin-bottom: 16px;
-  background: #fff;
+  background: rgba(255,255,255,0.8);
   border-radius: 10px;
   overflow: hidden;
 }
