@@ -603,6 +603,25 @@
 
 
 
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="/medias/10.jpg" class="lazyload placeholder" data-srcset="/medias/10.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+    </div>
+    <a href="/2022/07/15/C-Day1/" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> 上一篇:
+        <div class="title-text">C语言 Day1</div>
+      </div>
+      
+      <!-- <div class="content">
+        第一个C语言项目使用工具：VS2022社区版printf  打印与 mian 函数小试牛刀
+1234567891011#
+      </div> -->
+    </a>
+  </div>
+
 
 
 </div>
@@ -1124,9 +1143,25 @@
           <div class="link">
             
               
+                <a href="mailto:qianbimozi@gamil.com" class="social">
+                  
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a target="_blank" rel="noopener" href="https://github.com/qianbimo" class="social">
+                  
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
                 <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=2602630823" class="social">
                   
-                    <i class="fas fa-qq" aria-hidden="true"></i>
+                    <i class="fab fa-qq" aria-hidden="true"></i>
                   
                 </a>
               
@@ -1730,25 +1765,6 @@
     var OriginTitile=document.title,st;
     document.addEventListener("visibilitychange",function(){
         document.hidden?(document.title="ヽ(●-`Д´-)ノ你要玩捉迷藏嘛",clearTimeout(st)):(document.title="(Ő∀Ő3)ノ好哦！",st=setTimeout(function(){document.title=OriginTitile},3e3))
-    })
-</script>
-<!-- 一言API -->
-<!-- 现代写法，推荐 -->
-<!-- 兼容低版本浏览器 (包括 IE)，可移除 -->
-<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
-<!--End-->
-<script>
-  fetch('https://v1.hitokoto.cn')
-    .then(function (res){
-      return res.json();
-    })
-    .then(function (data) {
-      var hitokoto = document.getElementById('hitokoto');
-      hitokoto.innerText = data.hitokoto + '——【' + data.from + '】';
-    })
-    .catch(function (err) {
-      console.error(err);
     })
 </script>
 </html>

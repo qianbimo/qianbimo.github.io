@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>归档: 2022 | qianbimo&#39;s blog</title>
+  <title>C语言 Day1 | qianbimo&#39;s blog</title>
 
   <link rel="icon" type="image/png" href="/medias/favicon.png">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -519,123 +519,612 @@
     
 </header>
         <!-- 内容区域 -->
-        <div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"></div>
-<div class="bg-light-floor-archive" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -3;"></div>
-<div class="archive-header" style="background-image:url('https://pic1.zhimg.com/80/v2-1414b3a4b205e19060db18a20d08723a_1440w.jpg?source=1940ef5c')">
-  <div class="archive-header-title">
-    archive
-  </div>
-  <div class="archive-header-desc">
+        
+ <!-- prismjs 代码高亮 -->
+ 
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('/medias/10.jpg')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
-  <span class="title" id="archive-header-desc"></span>
-  <script>
-  function typedFn() {
-    const el = '#archive-header-desc';
-    const type = 'archive';
-    let desc = '愿你如风，被人温柔以待'
-    var typed = new Typed(el, {
-      strings: [desc],
-      startDelay: 100,
-      typeSpeed: 100,
-      loop: true,
-      backSpeed: 50,
-      showCursor: true
-    });
-  }
-  typedFn();
-</script>
-  
-  </div>
-  <div class="mask-box"></div>
-</div>
-
-<div class="archive-video">
-  <video class="full-video" autoplay loop muted>
-      <source style="width: 100%;height: 100vh;" src="/">
-  </video>
-  <div class="video-header-title">
-    archive
-  </div>
-  <div class="video-header-desc">
-  
-      <span class="title" id="archive-video-header-desc"></span>
-      <script>
-  function typedFn() {
-    const el = '#archive-video-header-desc';
-    const type = 'archive';
-    let desc = '愿你如风，被人温柔以待'
-    var typed = new Typed(el, {
-      strings: [desc],
-      startDelay: 100,
-      typeSpeed: 100,
-      loop: true,
-      backSpeed: 50,
-      showCursor: true
-    });
-  }
-  typedFn();
-</script>
-      
-  </div>
-  <div class="mask-box"></div>
-</div>
-
-<!-- hash算法 -->
-
-
-<div class="archive-main">
-  <section class="archive">
-    <div class="archive-content">
-      <ul class="post-archive">
-        
-        
-          
-            
-            <div class="year" data-aos="zoom-in-up">
-                <div class="bullet"></div>
-                <a href="/archives/2022">2022</a>
-            </div>
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2022/07/15/C-Day1/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="/medias/10.jpg" class="lazyload placeholder" data-srcset="/medias/10.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">07-15</span>
-              </div>
-              <a class="post-title" href="/2022/07/15/C-Day1/">C语言 Day1</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2022/07/11/hello-world/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="/medias/12.jpg" class="lazyload placeholder" data-srcset="/medias/12.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">07-11</span>
-              </div>
-              <a class="post-title" href="/2022/07/11/hello-world/">我的第一个博客</a>
-            </div>
-          </li>
-        
-      </ul>
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        C语言 Day1
+      </span>
     </div>
-  </section>
-  <div class="w-70">
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> 发表于：2022-07-15 |
+        </span>
+      
+
+      
+
+      
     
   </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
 </div>
+
+
+
+
+
+<div class="post-detail-content row justify-position" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <h2 id="第一个C语言项目"><a href="#第一个C语言项目" class="headerlink" title="第一个C语言项目"></a>第一个C语言项目</h2><h3 id="使用工具：VS2022社区版"><a href="#使用工具：VS2022社区版" class="headerlink" title="使用工具：VS2022社区版"></a>使用工具：VS2022社区版</h3><h4 id="printf-打印与-mian-函数"><a href="#printf-打印与-mian-函数" class="headerlink" title="printf  打印与 mian 函数"></a>printf  打印与 mian 函数</h4><p><strong>小试牛刀</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello World\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="number">100</span>);<span class="comment">//%d-打印出一个整数</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Ctrl+F5 运行</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><h4 id="有关main函数"><a href="#有关main函数" class="headerlink" title="有关main函数"></a>有关main函数</h4><p><code>main</code>函数是程序的入口，有且只有一个</p>
+<p>一个工程中可以有多个<code>.c</code>文件，但是多个<code>.c</code>文件中只能有一个<code>main</code>函数。</p>
+<h2 id="初识数据类型"><a href="#初识数据类型" class="headerlink" title="初识数据类型"></a>初识数据类型</h2><p><strong>那么何为数据类型？又分为几种？意义是什么？大小又是多少呢？</strong></p>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>数据类型，其实在我们生活中经常被使用，但是在编程语言中被重新定义了一下，并且加入了一些新的知识</p>
+<p><strong>数据类型 &#x3D; 一类数 + 这类数可以执行的操作</strong></p>
+<p>其中的一类数：指的就是我们数学中的整数，小数等，但是在C语言中分别叫做整型数据，浮点数</p>
+<p><strong>当然，C语言不是全部使用数学中的数据类型</strong> </p>
+<p>这类数可以执行的操作：指的是一个类型的数据可以执行哪些操作，比如：整形数据我们可以进行加减乘除，字符型数据却不可以。当然可以通过某种方法实现 </p>
+<h3 id="C语言中有哪些数据类型？"><a href="#C语言中有哪些数据类型？" class="headerlink" title="C语言中有哪些数据类型？"></a>C语言中有哪些数据类型？</h3><table>
+<thead>
+<tr>
+<th>实际代码</th>
+<th>表示内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>char</td>
+<td>字符数据类型</td>
+</tr>
+<tr>
+<td>short</td>
+<td>短整型</td>
+</tr>
+<tr>
+<td>int</td>
+<td>整型</td>
+</tr>
+<tr>
+<td>long</td>
+<td>长整型</td>
+</tr>
+<tr>
+<td>long long</td>
+<td>更长的整型</td>
+</tr>
+<tr>
+<td>float</td>
+<td>单精度浮点数</td>
+</tr>
+<tr>
+<td>double</td>
+<td>双精度浮点数</td>
+</tr>
+</tbody></table>
+<h4 id="实际运用"><a href="#实际运用" class="headerlink" title="实际运用"></a>实际运用</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//字符类型</span></span><br><span class="line"><span class="type">char</span> name =<span class="string">&quot;qianbimo&quot;</span>;</span><br><span class="line"><span class="comment">//整型</span></span><br><span class="line"><span class="type">int</span> age = <span class="number">18</span>；</span><br><span class="line"><span class="comment">//短整型</span></span><br><span class="line"><span class="type">short</span> num = <span class="number">10</span>；</span><br><span class="line"><span class="comment">//长整型</span></span><br><span class="line"><span class="type">long</span> road = <span class="number">114514</span></span><br><span class="line"><span class="comment">//更长的整形</span></span><br><span class="line"><span class="type">long</span> <span class="type">long</span> b = <span class="number">123456</span></span><br><span class="line"><span class="comment">//单精度浮点数</span></span><br><span class="line"> <span class="type">float</span> weight = <span class="number">55.5</span></span><br><span class="line"><span class="comment">//双精度浮点数</span></span><br><span class="line"> <span class="type">double</span> d = <span class="number">0.0</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="分这么多类型的意义是什么呢？"><a href="#分这么多类型的意义是什么呢？" class="headerlink" title="分这么多类型的意义是什么呢？"></a>分这么多类型的意义是什么呢？</h3><p>因为对于编程语言来说，许多数据都是人为设定的，我们输入这些数据到计算机中之后，如果我们事先不让计算机知道某一个数据的长度是多少，那么计算机就不知道应该如何处理长度，所以就会产生错误</p>
+<p><strong>因此，用不同数据类型在内存中占用的存储长度不同，将数据类型进行分类</strong></p>
+<p>这样的好处就是，我们事先让计算机知道了这个数据是什么类型，并且由于每一个数据类型的长度，都是固定好的，这样计算机处理的时候就会按照一定的长度去选数据</p>
+<h3 id="不同数据类型的空间大小是多少？"><a href="#不同数据类型的空间大小是多少？" class="headerlink" title="不同数据类型的空间大小是多少？"></a>不同数据类型的空间大小是多少？</h3><h4 id="操作符-sizeof"><a href="#操作符-sizeof" class="headerlink" title="操作符 sizeof"></a>操作符 sizeof</h4><h5 id="sizeof的使用"><a href="#sizeof的使用" class="headerlink" title="sizeof的使用"></a>sizeof的使用</h5><p>在实现展示数据类型大小之前，首先我们先来引进一个新的操作符——<code>sizeof</code></p>
+<p><code>sizeof</code>是一个操作符，其主要功能是计算<code>类型</code>或者<code>变量</code>所占空间的大小</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="built_in">sizeof</span>(<span class="type">char</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="built_in">sizeof</span>(<span class="type">short</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="built_in">sizeof</span>(<span class="type">int</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="built_in">sizeof</span>(<span class="type">long</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="built_in">sizeof</span>(<span class="type">long</span> <span class="type">long</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="built_in">sizeof</span>(<span class="type">float</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="built_in">sizeof</span>(<span class="type">double</span>));</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行后的输出结果</p>
+<img src="https://img1.imgtp.com/2022/07/15/PHEhVQwS.png" class="lazyload placeholder" data-srcset="https://img1.imgtp.com/2022/07/15/PHEhVQwS.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"  />
+
+<p>但是结果并没有单位，不能让我们直观的感受到它的大小，那么问题来了，结果所隐含的单位是什么呢？</p>
+<h5 id="sizeof-的单位"><a href="#sizeof-的单位" class="headerlink" title="sizeof 的单位"></a>sizeof 的单位</h5><p>sizeof 的单位是计算机中常见的单位——字节<code>Byte</code></p>
+<h5 id="计算机中最小的单位"><a href="#计算机中最小的单位" class="headerlink" title="计算机中最小的单位"></a>计算机中最小的单位</h5><p>作为常识我们知道计算机识别的是二进制即<code>1,0</code></p>
+<p>而<code>1</code>所占用的空间大小为1Bit，<code>0</code>所占用的空间大小为0Bit</p>
+<p>所以我们得知<code>Bit</code>就是计算机中最小的单位</p>
+<h5 id="常见的计算机单位的换算"><a href="#常见的计算机单位的换算" class="headerlink" title="常见的计算机单位的换算"></a>常见的计算机单位的换算</h5><blockquote>
+<p>1Byte&#x3D;8Bit</p>
+<p>1Kb&#x3D;1024Byte</p>
+<p>1Mb&#x3D;1024Kb</p>
+<p>1Gb&#x3D;1024Mb</p>
+<p>1Tb&#x3D;1024Gb</p>
+<p>1Pb&#x3D;1024Tb</p>
+</blockquote>
+<h4 id="不同数据类型的空间大小"><a href="#不同数据类型的空间大小" class="headerlink" title="不同数据类型的空间大小"></a>不同数据类型的空间大小</h4><p>根据上面知识的学习我们已经可以了解到，输出结果的单位为<code>Byte</code></p>
+<p>那么数据类型的实际大小为：</p>
+<table>
+<thead>
+<tr>
+<th>实际代码</th>
+<th>实际大小&#x2F;Btye</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>char</td>
+<td>1</td>
+</tr>
+<tr>
+<td>short</td>
+<td>2</td>
+</tr>
+<tr>
+<td>int</td>
+<td>4</td>
+</tr>
+<tr>
+<td>long</td>
+<td>4</td>
+</tr>
+<tr>
+<td>long long</td>
+<td>8</td>
+</tr>
+<tr>
+<td>float</td>
+<td>4</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8</td>
+</tr>
+</tbody></table>
+<p>产生大小的概念之后，我们发现<code>short</code>短整型的大小为2<code>Bit</code>可以理解，<strong>但是<code>long</code>长整型为什么没有<code>int</code>整型长呢？</strong></p>
+<blockquote>
+<p>那是因为在C语言的标准中 sizeof(long)&gt;&#x3D;sizeof(int)</p>
+</blockquote>
+<h2 id="初识常量变量"><a href="#初识常量变量" class="headerlink" title="初识常量变量"></a>初识常量变量</h2><p>在上面的学习中已经了解到，不同的数字类型可以表示不同的东西，例如：字符用<code>char</code>，数据可以选择用<code>int</code></p>
+<p>在我们的日常生活中也有许多的数据，他们大体可以分为两类：一种是<code>不可变的数据</code>，另一种是<code>一定可变的数据</code>。前者像，血型，性别等等，后者例如，工资，年龄体重，而在c语言当中这两种数据分别被称为：<code>常量和变量</code></p>
+<blockquote>
+<p><strong>常量&#x3D;不可改变的量</strong></p>
+<p><strong>变量&#x3D;能被改变的量</strong></p>
+</blockquote>
+<h3 id="定义变量的方法"><a href="#定义变量的方法" class="headerlink" title="定义变量的方法"></a>定义变量的方法</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//创建一个变量</span></span><br><span class="line">  <span class="comment">//类型 变量 = 赋值 或者 类型 变量（不推荐）</span></span><br><span class="line">    <span class="type">int</span> age = <span class="number">18</span>;</span><br><span class="line">    <span class="type">double</span> weight = <span class="number">55.5</span>;</span><br><span class="line">    <span class="type">char</span> ch = <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="变量的初步应用"><a href="#变量的初步应用" class="headerlink" title="变量的初步应用"></a>变量的初步应用</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> age = <span class="number">18</span>;</span><br><span class="line">    <span class="type">double</span> weight = <span class="number">55.5</span>;</span><br><span class="line">    age = age + <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, age);</span><br><span class="line">    weight = weight - <span class="number">10</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lf\n&quot;</span>, weight);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>拓展：不同的数据类型打印用不同的<code>%</code>来表示</p>
+<blockquote>
+<p>int-%d</p>
+<p>float-%lf</p>
+<p>double-%f</p>
+</blockquote>
+<h3 id="变量的分类"><a href="#变量的分类" class="headerlink" title="变量的分类"></a>变量的分类</h3><ul>
+<li>局部变量</li>
+<li>全局变量</li>
+</ul>
+<p>局部变量：在大括号内定义的变量</p>
+<p>全局变量：在大括号外定义的变量 </p>
+<p>为了更好的理解举个例子</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//全局变量 - &#123;&#125;外部定义的变量</span></span><br><span class="line"><span class="type">int</span> a = <span class="number">100</span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//局部变量 - &#123;&#125;内部定义的变量</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, a);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>但是此时输出的结果会是什么呢？10or100？</strong></p>
+<p><strong><img src="https://img1.imgtp.com/2022/07/15/bkhzS6TV.png" class="lazyload placeholder" data-srcset="https://img1.imgtp.com/2022/07/15/bkhzS6TV.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></strong></p>
+<p> 很显然结果是<strong>10</strong>但是为什么呢？</p>
+<p>是因为在C语言中：<strong>当全局变量与局部变量名称冲突时，局部变量优先。</strong>因此我们不建议把全局变量和局部变量名字写成一样</p>
+<h3 id="变量的使用"><a href="#变量的使用" class="headerlink" title="变量的使用"></a>变量的使用</h3><h4 id="scanf-函数"><a href="#scanf-函数" class="headerlink" title="scanf() 函数"></a>scanf() 函数</h4><p>在使用变量的时候，我们又要引进一个新的函数——<code>scanf()</code> 函数</p>
+<p><code>scanf()</code>函数是一个输入函数</p>
+<h5 id="scanf-函数的使用"><a href="#scanf-函数的使用" class="headerlink" title="scanf()函数的使用"></a>scanf()函数的使用</h5><p>我们可以来写一个代码求两个整数的和，来具体感受一下<code>scanf()</code>函数的具体表达</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> b = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>,&amp;a, &amp;b);</span><br><span class="line">    sum = a + b;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;sum = %d\n&quot;</span>, sum);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是当我们直接运行时可能会出现报错</p>
+<h5 id="scanf-函数报错的解决办法"><a href="#scanf-函数报错的解决办法" class="headerlink" title="scanf()函数报错的解决办法"></a>scanf()函数报错的解决办法</h5><p><img src="https://img1.imgtp.com/2022/07/15/owP18ZMm.png" class="lazyload placeholder" data-srcset="https://img1.imgtp.com/2022/07/15/owP18ZMm.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
+<p>当我们使用VS编译器的时候，<code>scanf()</code>函数报错是正常现象。官方已经给了我们解决方式</p>
+<ul>
+<li>在源文件的第一行中添加<code>#define CRT_SECURE_NO_WARNINGS 1</code> <strong>(推荐)</strong></li>
+<li>使用<code>scanf_s()</code>函数来替换<code>scanf()</code>函数 <strong>(不推荐)</strong></li>
+</ul>
+<p>那么为什么不推荐<code>scanf_s()</code>函数呢？</p>
+<p>是因为<code>scanf_s()</code>函数并不是c语言中所规定的标准，而是由VS编译器自己提供创造的。使用<code>scanf_s()</code>函数可能会导致在分享代码时，他人使用的是非VS编译器就会导致整个函数报错。</p>
+
+      </div>
+      <div class="post-tags-categories">
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>作者:  </strong>qianbimo</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>文章链接:  </strong>
+    <a href="/2022/07/15/C-Day1/" target="_blank" title="C语言 Day1">http://example.com/2022/07/15/C-Day1/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明:   </strong>
+      本网站所有文章除特别声明外,均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      许可协议。转载请注明出处!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="/medias/12.jpg" class="lazyload placeholder" data-srcset="/medias/12.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+    </div>
+    <a href="/2022/07/11/hello-world/" class="post-nav-link">
+      <div class="title">
+        下一篇: <i class="fas fa-angle-right"></i>
+        <div class="title-text">我的第一个博客</div>
+      </div>
+      <!-- <div class="content">
+        正如标题所见，这是我梦开始的地方。
+
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          你的赏识是我前进的动力
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="/medias/Ali_pay.jpg" class="lazyload placeholder" data-srcset="/medias/Ali_pay.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="/medias/Wechat_pay.jpg" class="lazyload placeholder" data-srcset="/medias/Wechat_pay.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <!-- 文章详情页右侧目录 -->
+
+  <div class="toc-aside">
+    <div class="toc-main">
+      <div class="toc-aside-title">
+        <i class="fas fa-list-ul" aria-hidden="true"></i><span>本文目录</span>
+        
+          <div class="toc-open-close">本文目录</div>
+        
+      </div>
+      <div class="toc-content">
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 手机端目录按钮 -->
+  <div id="toc-mobile-btn">
+    <i class="fas fa-list-ul" aria-hidden="true"></i>
+  </div>
+
+
+<script>
+  function closeToc(init) {
+    $(".toc-aside").css({'width': 0, 'padding': 0, 'transition': init ?  'noe' : 'width 0.3s' });
+    $(".toc-content").css({'width': 0});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
+    $(".main-content").css({'width': '75%', 'margin-left': 'auto', 'margin-right': 'auto',});
+  };
+  function openToc() {
+    $(".main-content").css({'width': '65%', 'margin-right': '10px', 'margin-left': 'calc(35% - 350px)'});
+    $(".toc-aside").css({'width': '300px', 'padding': '0 10px', 'transition': 'width 0.3s'});
+    $(".toc-content").css({'width': '300px'});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
+  }
+  function openBtnClickFn () {
+    let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
+    let open = eval('' || 'true');
+    openOrCloseBtn.click(function() {
+      if (open) {
+        closeToc();
+        open = false;
+      } else {
+        openToc();
+        open = true;
+      }
+    });
+  };
+  openBtnClickFn();
+  initCloseTocWidth(true);
+
+  function initCloseTocWidth(init) {
+    if (window.innerWidth >= 992) {
+      let isClose = false;
+      isClose && closeToc(init)
+    }
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    $(".toc-aside").css({'transition': 'no'});
+  })
+  document.addEventListener('pjax:complete', function () {
+    openBtnClickFn();
+  })
+  
+</script>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
 
       </main>
     </div>

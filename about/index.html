@@ -616,6 +616,10 @@
 					<i class="fab fa-weixin" aria-hidden="true"></i> 微信：<a href="">qianbimoqwq</a> 
 				</div>
 			
+				<div class="account">
+					<i class="fab fa-bilibili" aria-hidden="true"></i> BiliBili：<a target="_blank" rel="noopener" href="https://space.bilibili.com/225299401/">铅笔沫233</a> 
+				</div>
+			
 		</div>
 	</div>
 	
@@ -627,12 +631,47 @@
 		<div class="games">
 			
 				<div class="game-item">
+					<a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561198330405557">
 					<div class="logo">
 						<img src="/medias/steam.png" class="lazyload placeholder" data-srcset="/medias/steam.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
 					</div>
 					<div class="name">
 						Steam
 					</div>
+				</a>
+				</div>
+			
+				<div class="game-item">
+					<a href="">
+					<div class="logo">
+						<img src="/medias/ubisoft.png" class="lazyload placeholder" data-srcset="/medias/ubisoft.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+					</div>
+					<div class="name">
+						Ubisoft
+					</div>
+				</a>
+				</div>
+			
+				<div class="game-item">
+					<a href="">
+					<div class="logo">
+						<img src="/medias/xbox.png" class="lazyload placeholder" data-srcset="/medias/xbox.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+					</div>
+					<div class="name">
+						Xbox
+					</div>
+				</a>
+				</div>
+			
+				<div class="game-item">
+					<a href="">
+					<div class="logo">
+						<img src="/medias/epicgames.png" class="lazyload placeholder" data-srcset="/medias/epicgames.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+					</div>
+					<div class="name">
+						Epicgames
+					</div>
+				</a>
 				</div>
 			
 		</div>
@@ -644,6 +683,39 @@
 			<i class="fas fa-book" aria-hidden="true"></i>&nbsp;&nbsp;书籍
 		</div>
 		<div class="books">
+			
+				<div class="book-item">
+					<a target="_blank" rel="noopener" href="https://music.163.com/#/artist?id=32540734">
+					<div class="logo">
+						<img src="/medias/mrs.png" class="lazyload placeholder" data-srcset="/medias/mrs.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+					</div>
+					<div class="name">
+						塞壬唱片-MRS
+					</div>
+				</a>
+				</div>
+			
+				<div class="book-item">
+					<a target="_blank" rel="noopener" href="https://music.163.com/#/artist?id=33927412">
+					<div class="logo">
+						<img src="/medias/YOASOBI.jpg" class="lazyload placeholder" data-srcset="/medias/YOASOBI.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+					</div>
+					<div class="name">
+						YOASOBI
+					</div>
+				</a>
+				</div>
+			
+				<div class="book-item">
+					<a href="">
+					<div class="logo">
+						<img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=710999414,899378807&fm=26&gp=0.jpg" class="lazyload placeholder" data-srcset="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=710999414,899378807&fm=26&gp=0.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+					</div>
+					<div class="name">
+						孙子兵法
+					</div>
+				</a>
+				</div>
 			
 		</div>
 	</div>
@@ -821,9 +893,25 @@
           <div class="link">
             
               
+                <a href="mailto:qianbimozi@gamil.com" class="social">
+                  
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a target="_blank" rel="noopener" href="https://github.com/qianbimo" class="social">
+                  
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
                 <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=2602630823" class="social">
                   
-                    <i class="fas fa-qq" aria-hidden="true"></i>
+                    <i class="fab fa-qq" aria-hidden="true"></i>
                   
                 </a>
               
@@ -1427,25 +1515,6 @@
     var OriginTitile=document.title,st;
     document.addEventListener("visibilitychange",function(){
         document.hidden?(document.title="ヽ(●-`Д´-)ノ你要玩捉迷藏嘛",clearTimeout(st)):(document.title="(Ő∀Ő3)ノ好哦！",st=setTimeout(function(){document.title=OriginTitile},3e3))
-    })
-</script>
-<!-- 一言API -->
-<!-- 现代写法，推荐 -->
-<!-- 兼容低版本浏览器 (包括 IE)，可移除 -->
-<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
-<!--End-->
-<script>
-  fetch('https://v1.hitokoto.cn')
-    .then(function (res){
-      return res.json();
-    })
-    .then(function (data) {
-      var hitokoto = document.getElementById('hitokoto');
-      hitokoto.innerText = data.hitokoto + '——【' + data.from + '】';
-    })
-    .catch(function (err) {
-      console.error(err);
     })
 </script>
 </html>
