@@ -571,10 +571,10 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h2 id="第一个C语言项目"><a href="#第一个C语言项目" class="headerlink" title="第一个C语言项目"></a>第一个C语言项目</h2><h3 id="使用工具：VS2022社区版"><a href="#使用工具：VS2022社区版" class="headerlink" title="使用工具：VS2022社区版"></a>使用工具：VS2022社区版</h3><h4 id="printf-打印与-mian-函数"><a href="#printf-打印与-mian-函数" class="headerlink" title="printf  打印与 mian 函数"></a>printf  打印与 mian 函数</h4><p><strong>小试牛刀</strong></p>
+        <h2 id="第一个C语言项目"><a href="#第一个C语言项目" class="headerlink" title="第一个C语言项目"></a>第一个C语言项目</h2><h3 id="使用工具：VS2022社区版"><a href="#使用工具：VS2022社区版" class="headerlink" title="使用工具：VS2022社区版"></a>使用工具：VS2022社区版</h3><h4 id="printf-打印与-mian-函数"><a href="#printf-打印与-mian-函数" class="headerlink" title="printf  打印与 mian() 函数"></a>printf  打印与 mian() 函数</h4><p><strong>小试牛刀</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello World\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="number">100</span>);<span class="comment">//%d-打印出一个整数</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Ctrl+F5 运行</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><h4 id="有关main函数"><a href="#有关main函数" class="headerlink" title="有关main函数"></a>有关main函数</h4><p><code>main</code>函数是程序的入口，有且只有一个</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><h4 id="有关main-函数"><a href="#有关main-函数" class="headerlink" title="有关main()函数"></a>有关main()函数</h4><p><code>main()</code>函数是程序的入口，有且只有一个</p>
 <p>一个工程中可以有多个<code>.c</code>文件，但是多个<code>.c</code>文件中只能有一个<code>main</code>函数。</p>
 <h2 id="初识数据类型"><a href="#初识数据类型" class="headerlink" title="初识数据类型"></a>初识数据类型</h2><p><strong>那么何为数据类型？又分为几种？意义是什么？大小又是多少呢？</strong></p>
 <h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>数据类型，其实在我们生活中经常被使用，但是在编程语言中被重新定义了一下，并且加入了一些新的知识</p>
@@ -726,8 +726,7 @@
 <li>在源文件的第一行中添加<code>#define CRT_SECURE_NO_WARNINGS 1</code> <strong>(推荐)</strong></li>
 <li>使用<code>scanf_s()</code>函数来替换<code>scanf()</code>函数 <strong>(不推荐)</strong></li>
 </ul>
-<p>那么为什么不推荐<code>scanf_s()</code>函数呢？</p>
-<p>是因为<code>scanf_s()</code>函数并不是c语言中所规定的标准，而是由VS编译器自己提供创造的。使用<code>scanf_s()</code>函数可能会导致在分享代码时，他人使用的是非VS编译器就会导致整个函数报错。</p>
+<h5 id="那么为什么不推荐scanf-s-函数呢？"><a href="#那么为什么不推荐scanf-s-函数呢？" class="headerlink" title="那么为什么不推荐scanf_s()函数呢？"></a>那么为什么不推荐<code>scanf_s()</code>函数呢？</h5><p>是因为<code>scanf_s()</code>函数并不是c语言中所规定的标准，而是由VS编译器自己提供创造的。使用<code>scanf_s()</code>函数可能会导致在分享代码时，他人使用的是非VS编译器就会导致整个函数报错。</p>
 
       </div>
       <div class="post-tags-categories">
