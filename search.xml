@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>C语言 Day4</title>
+      <link href="/2022/07/26/c-Day4/"/>
+      <url>/2022/07/26/c-Day4/</url>
+      
+        <content type="html"><![CDATA[<p>字符串</p><p>字符串即一串字符。单括号括起来的是字符，双括号括起来的就是字符串。</p><p>如何描述字符串</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">mian</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;abcdef&quot;</span>; <span class="comment">//字符串</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>提前需要注意的是，字符串的结束标志是一个<code>\0</code>的转义字符，在计算字符串长度的时候，<code>\0</code>因为是结束的标志，因此不算做字符串的内容</p><p>证明字符串的内容都是字符</p><p>因为数组表示的是一组相同类型的元素，所以我们在这里可以选择使用字符数组来证明</p><p>首先将字符串存到字符数组中</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">miab</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> arr[] = <span class="string">&quot;abcde&quot;</span>;<span class="comment">//[]不填写，会自动根据后续内容进行初始化</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>按下<code>F10</code>进行调试，之后再监视<code>arr</code></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>C语言_Day3</title>
       <link href="/2022/07/24/C-Day3/"/>
       <url>/2022/07/24/C-Day3/</url>
