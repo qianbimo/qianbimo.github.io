@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>C_Day5</title>
+      <link href="/2022/07/28/C-Day5/"/>
+      <url>/2022/07/28/C-Day5/</url>
+      
+        <content type="html"><![CDATA[<h1 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h1><p><strong>转义字符就是转变其原来的意思</strong></p><p>这里有一个转义的图表可以参考一下</p><table><thead><tr><th>转义字符</th><th>意义</th><th>ASCII码值（十进制）</th></tr></thead><tbody><tr><td>\a</td><td>响铃(BEL)</td><td>007</td></tr><tr><td>\b</td><td>退格(BS) ，将当前位置移到前一列</td><td>008</td></tr><tr><td>\f</td><td>换页(FF)，将当前位置移到下页开头</td><td>012</td></tr><tr><td>\n</td><td>换行(LF) ，将当前位置移到下一行开头</td><td>010</td></tr><tr><td>\r</td><td>回车(CR) ，将当前位置移到本行开头</td><td>013</td></tr><tr><td>\t</td><td>水平制表(HT) （跳到下一个TAB位置）</td><td>009</td></tr><tr><td>\v</td><td>垂直制表(VT)</td><td>011</td></tr><tr><td>\</td><td>代表一个反斜线字符’’&#39;</td><td>092</td></tr><tr><td>&#39;</td><td>代表一个单引号（撇号）字符</td><td>039</td></tr><tr><td>&quot;</td><td>代表一个双引号字符</td><td>034</td></tr><tr><td>?</td><td>代表一个问号</td><td>063</td></tr><tr><td>\0</td><td>空字符(NUL)</td><td>000</td></tr><tr><td>\ddd</td><td>1到3位八进制数所代表的任意字符</td><td>三位八进制</td></tr><tr><td>\xhh</td><td>十六进制所代表的任意字符</td><td>十六进制</td></tr></tbody></table><p>那来举一个例子</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;C;\test\test.c&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这个输出结果会是什么呢</p><p><img src="https://img1.imgtp.com/2022/07/28/D65LPzf1.png" class="lazyload placeholder" data-srcset="https://img1.imgtp.com/2022/07/28/D65LPzf1.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p><p>再来举两个特殊的例子</p><p><code>\ddd</code>和<code>\xhh</code>，一个是<code>八进制</code>转化一个是<code>十六进制</code>转化，在<code>printf</code>指令中<code>%d</code>可以直接打印出其换算的十进制数，<code>%c</code>可以直接打印出ASCII码所对应的字符</p><p><a href="https://zh.wikipedia.org/wiki/ASCII">ASCII码表</a></p><h2 id="小思考"><a href="#小思考" class="headerlink" title="小思考"></a>小思考</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%D\n&quot;</span>, <span class="built_in">strlen</span>(<span class="string">&quot;C:\test\328\test.c&quot;</span>));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这个的输出结果是多少？<br>答案是 <code>14</code></p><p>解答</p><p>转义字符带上斜杠只会算作<strong>一个字符</strong>，因此<code>\t</code>算作一个字符</p><h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><p>注释是用来解释复杂代码的，可以让<strong>未来的自己看得懂</strong></p><p>注释在c语言中有两种</p><ul><li><code>//</code>c++的注释风格</li><li><code>/* */</code>c语言的注释风格(缺点是不支持嵌套注释)</li></ul>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>C语言 Day4</title>
       <link href="/2022/07/26/c-Day4/"/>
       <url>/2022/07/26/c-Day4/</url>
