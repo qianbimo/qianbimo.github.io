@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>C语言 Day4 | qianbimo&#39;s blog</title>
+  <title>C语言 Day6 | qianbimo&#39;s blog</title>
 
   <link rel="icon" type="image/png" href="/medias/favicon.png">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -533,21 +533,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('/medias/7.jpg')">
+  background-position: center center;position: relative;background-image:url('/medias/5.jpg')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        C语言 Day4
+        C语言 Day6
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> 发表于：2022-07-26 |
+          <i class="fas fa-calendar"></i> 发表于：2022-07-29 |
         </span>
       
 
@@ -571,44 +571,19 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><p><strong>字符串即一串字符。</strong>单括号括起来的是<strong>字符</strong>，双括号括起来的就是<strong>字符串</strong>。</p>
-<h2 id="如何描述字符串"><a href="#如何描述字符串" class="headerlink" title="如何描述字符串"></a>如何描述字符串</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;abcdef&quot;</span>; <span class="comment">//字符串</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="初识选择语句"><a href="#初识选择语句" class="headerlink" title="初识选择语句"></a>初识选择语句</h2><p>提供选择的语句</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> input = <span class="number">0</span>;<span class="comment">//输入的值</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;XD\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;欢迎来到我的blog,想要继续看嘛(1/0)&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;input);</span><br><span class="line">    <span class="keyword">if</span> (input == <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;不给你看哦o(*￣▽￣*)ブ&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (input == <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;那好吧，再见了(T_T)&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>提前需要注意的是，字符串的结束标志是一个<code>\0</code>的转义字符，在计算字符串长度的时候，<code>\0</code>因为是结束的标志，因此不算做字符串的内容</p>
-<h2 id="证明字符串的内容都是字符-与-0算作元素"><a href="#证明字符串的内容都是字符-与-0算作元素" class="headerlink" title="证明字符串的内容都是字符 与 \0算作元素"></a>证明字符串的内容都是字符 与 <code>\0</code>算作元素</h2><p>因为<strong>数组</strong>表示的是一组<strong>相同类型</strong>的<strong>元素</strong>，所以我们在这里可以选择使用字符数组来证明</p>
-<p>首先将字符串存到字符数组中</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> arr[] = <span class="string">&quot;abcde&quot;</span>;<span class="comment">//[]不填写，会自动根据后续内容进行初始化</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>初识循环语句</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> money = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(money &lt; <span class="number">30000</span>)	<span class="comment">//循环</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;攒钱:%d\n&quot;</span>, money);</span><br><span class="line">        money++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(money == <span class="number">30000</span>)		<span class="comment">//选择</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;大成功\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>按下<code>F10</code>进行调试，之后再监视<code>arr</code></p>
-<p><img src="https://img1.imgtp.com/2022/07/27/6VXPkuMM.png" class="lazyload placeholder" data-srcset="https://img1.imgtp.com/2022/07/27/6VXPkuMM.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
-<p>根据右侧监视的结果我们发现有0~5，一共<strong>6个元素</strong>，是因为字符串在结尾<strong>隐藏了一个<code>\0</code></strong></p>
-<h2 id="0的重要性-与-0是字符串中止的证明"><a href="#0的重要性-与-0是字符串中止的证明" class="headerlink" title="\0的重要性 与 \0是字符串中止的证明"></a><code>\0</code>的重要性 与 <code>\0</code>是字符串中止的证明</h2><p><code>\0</code>的主要作用就是进行一个<strong>终止读取</strong>的作用<del>及时折损</del></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> arr1[] = <span class="string">&quot;abc&quot;</span>;			<span class="comment">//字符串</span></span><br><span class="line">    <span class="type">char</span> arr2[] = &#123;<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>&#125;;	<span class="comment">//字符</span></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, arr1);			<span class="comment">//%s是打印字符串用的</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, arr2);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="初识函数"><a href="#初识函数" class="headerlink" title="初识函数"></a>初识函数</h2><p>C语言的函数感念与所学的数学基本一致，需要有表达式和未知量，从而得出一个结果</p>
+<p>用函数之前</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> num1 = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> num2 = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>, &amp;num1,&amp;num2);</span><br><span class="line">    <span class="type">int</span> sum = num1 + num2;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, sum);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://img1.imgtp.com/2022/07/27/WjJL6Soi.png" class="lazyload placeholder" data-srcset="https://img1.imgtp.com/2022/07/27/WjJL6Soi.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
-<p>arr1是<strong>正常</strong>的但是arr2出现了乱码是为什么呢？</p>
-<h3 id="乱码"><a href="#乱码" class="headerlink" title="乱码"></a>乱码</h3><p>通过<strong>画图</strong>可以方便我们对<strong>内存空间</strong>进行理解，如下图所示</p>
-<p><img src="https://img1.imgtp.com/2022/07/27/ZxvYEook.png" class="lazyload placeholder" data-srcset="https://img1.imgtp.com/2022/07/27/ZxvYEook.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
-<p>而出现乱码的原因就是，<strong>由于没有终止符号就会一直读取未知信息，产生乱码</strong></p>
-<p><strong>如何解决呢？</strong>很简单可以在后面直接手动输入一个**<code>\0</code>**</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> arr1[] = <span class="string">&quot;abc&quot;</span>;</span><br><span class="line">    <span class="type">char</span> arr2[] = &#123;<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;\0&#x27;</span>&#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, arr1);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, arr2);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用函数后</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">add</span> <span class="params">(<span class="type">int</span> x , <span class="type">int</span> y)</span>			<span class="comment">//创建函数</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> z= x+y;</span><br><span class="line">    <span class="keyword">return</span> z;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> num1 = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> num2 = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>, &amp;num1,&amp;num2);</span><br><span class="line">    <span class="type">int</span> sum = add(num1,num2);	<span class="comment">//使用函数</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, sum);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>这样就不会出现乱码了</p>
-<p>现在已经知道了<code>\0</code>会算作一个元素个数，<strong>那么怎么证明其不算作字符长度呢？</strong></p>
-<h2 id="0不算作字符长度"><a href="#0不算作字符长度" class="headerlink" title="\0不算作字符长度"></a><code>\0</code>不算作字符长度</h2><p>证明之前还是来简单介绍一个新的函数，来辅助证明</p>
-<h3 id="strlen-函数"><a href="#strlen-函数" class="headerlink" title="strlen()函数"></a><code>strlen()</code>函数</h3><p><code>strlen()</code>函数，全称是<strong>string length</strong>，它直接在<code>()</code>内填写，可以求字符串的长度，但是<strong>求完长度后会直接返回</strong></p>
-<p>因此在使用这个函数的时候可以在<strong>前面</strong>打上<code>int len</code>就可以解决</p>
-<p>但是在使用这个函数是会有<strong>头文件</strong>报错，因此还需要在头文件上加上**<code>#include &lt;string.h&gt;</code>**</p>
-<h3 id="回到证明"><a href="#回到证明" class="headerlink" title="回到证明"></a>回到证明</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> len = <span class="built_in">strlen</span>(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,len);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img1.imgtp.com/2022/07/27/lLSAlMf0.png" class="lazyload placeholder" data-srcset="https://img1.imgtp.com/2022/07/27/lLSAlMf0.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
-<p><strong>结果显然</strong>是3，因此足以证明**<code>\0</code>会算作一个元素个数，但其不算作字符长度**</p>
-<h3 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h3><p>如果要是输入字符会<code>strlen()</code>函数会怎么样？来试验一下</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> arr2[] = &#123;<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>&#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, arr2);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img1.imgtp.com/2022/07/27/MA72C07W.png" class="lazyload placeholder" data-srcset="https://img1.imgtp.com/2022/07/27/MA72C07W.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
-<p>结果如图，这个数字很奇怪，是为什么呢？</p>
-<p>因为<code>strlen()</code>在求算字符长度是，得出的结果是<strong>随机值</strong>，多按几次<code>F5</code>就会发现<strong>每次的结果</strong>都是<strong>不一样</strong>的</p>
 
       </div>
       <div class="post-tags-categories">
@@ -622,7 +597,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>文章链接:  </strong>
-    <a href="/2022/07/26/c-Day4/" target="_blank" title="C语言 Day4">http://example.com/2022/07/26/c-Day4/</a>
+    <a href="/2022/07/29/C-Day6/" target="_blank" title="C语言 Day6">http://example.com/2022/07/29/C-Day6/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明:   </strong>
@@ -640,18 +615,19 @@
 
 
 
+
+
   
-  <div class="post-nav-prev post-nav-item">
+  <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="/medias/6.jpg" class="lazyload placeholder" data-srcset="/medias/6.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+      <img class="lazyload lazyload placeholder" src="/medias/6.jpg" class="lazyload placeholder" data-srcset="/medias/6.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
     </div>
     <a href="/2022/07/28/C-Day5/" class="post-nav-link">
       <div class="title">
-        <i class="fas fa-angle-left"></i> 上一篇:
+        下一篇: <i class="fas fa-angle-right"></i>
         <div class="title-text">C语言 Day5</div>
       </div>
-      
       <!-- <div class="content">
         转义字符转义字符就是转变其原来的意思
 这里有一个转义的图表可以参考一下
@@ -662,30 +638,6 @@
 意义
 ASCII码值（十进制）
 
-      </div> -->
-    </a>
-  </div>
-
-
-
-  
-  <div class="post-nav-next post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="/medias/8.jpg" class="lazyload placeholder" data-srcset="/medias/8.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
-    </div>
-    <a href="/2022/07/24/C-Day3/" class="post-nav-link">
-      <div class="title">
-        下一篇: <i class="fas fa-angle-right"></i>
-        <div class="title-text">C语言 Day3</div>
-      </div>
-      <!-- <div class="content">
-        常量常量指的是代码中不变的量
-在c语言中常量分为一下几种
-
-字面常量
-const修饰的常量
-#define定义的标识符常
       </div> -->
     </a>
   </div>
