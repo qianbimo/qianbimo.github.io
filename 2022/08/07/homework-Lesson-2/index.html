@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>C-Day7 | qianbimo&#39;s blog</title>
+  <title>homework-Lesson-2 | qianbimo&#39;s blog</title>
 
   <link rel="icon" type="image/png" href="/medias/favicon.png">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -533,21 +533,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('/medias/4.jpg')">
+  background-position: center center;position: relative;background-image:url('/medias/3.jpg')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        C-Day7
+        homework-Lesson-2
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> 发表于：2022-08-05 |
+          <i class="fas fa-calendar"></i> 发表于：2022-08-07 |
         </span>
       
 
@@ -571,65 +571,16 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="初识操作符"><a href="#初识操作符" class="headerlink" title="初识操作符"></a>初识操作符</h1><blockquote>
-<p>算术操作符</p>
-</blockquote>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+  -  *  /  %(取余)</span><br></pre></td></tr></table></figure>
+        <h1 id="求两个数的较大值"><a href="#求两个数的较大值" class="headerlink" title="求两个数的较大值"></a>求两个数的较大值</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> _CRT_SECURE_NO_WARNINGS 1</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">MAX</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (x &gt; y)</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	<span class="keyword">return</span> y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> num1 = <span class="number">0</span>;</span><br><span class="line">	<span class="type">int</span> num2 = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>, &amp;num1, &amp;num2);</span><br><span class="line">	<span class="type">int</span> max = MAX(num1, num2);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, max);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>位移操作符</p>
-</blockquote>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; &lt;&lt;</span><br></pre></td></tr></table></figure>
+<h1 id="BC41-你是天才吗？"><a href="#BC41-你是天才吗？" class="headerlink" title="BC41-你是天才吗？"></a><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/557cc54704bb4d56b73b62d1a5455331?tpId=107&&tqId=33322&rp=1&ru=/ta/beginner-programmers&qru=/ta/beginner-programmers/question-ranking">BC41-你是天才吗？</a></h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> IQ = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;IQ) != EOF)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (IQ &gt;= <span class="number">140</span>)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Genius\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>位操作符</p>
-</blockquote>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp;  ^  |</span><br></pre></td></tr></table></figure>
+<h1 id="BC32-输出学生信息"><a href="#BC32-输出学生信息" class="headerlink" title="BC32-输出学生信息"></a><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/8e94458049eb4e838f711bbd1be0045e?tpId=107&&tqId=33313&rp=1&ru=/ta/beginner-programmers&qru=/ta/beginner-programmers/question-ranking">BC32-输出学生信息</a></h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Name    Age    Gender\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;---------------------\n&quot;</span>);   </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Jack    18     man\n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>赋值操作符</p>
-</blockquote>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">= += -= *= /= &amp;= ^=  |=   &gt;&gt;=  &lt;&lt;=</span><br></pre></td></tr></table></figure>
+<h1 id="BC18-计算带余除法"><a href="#BC18-计算带余除法" class="headerlink" title="BC18-计算带余除法"></a><a href="">BC18-计算带余除法</a></h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">0</span>, b = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>, &amp;a, &amp;b);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d %d\n&quot;</span>, a / b, a % b);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>单目操作符</p>
-</blockquote>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">!           逻辑反操作</span><br><span class="line">-           负值</span><br><span class="line">+           正值</span><br><span class="line">&amp;           取地址</span><br><span class="line"><span class="keyword">sizeof</span>      操作数的类型长度（以字节为单位）</span><br><span class="line">~           对一个数的二进制按位取反</span><br><span class="line">--          前置、后置--</span><br><span class="line">++          前置、后置++</span><br><span class="line">*           间接访问操作符(解引用操作符)</span><br><span class="line">(类型)       强制类型转换</span><br></pre></td></tr></table></figure>
+<h1 id="BC17-计算表达式的值"><a href="#BC17-计算表达式的值" class="headerlink" title="BC17-计算表达式的值"></a><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/58457d27f91043edaf95b6591bb64fd6?tpId=107&&tqId=33298&rp=1&ru=/ta/beginner-programmers&qru=/ta/beginner-programmers/question-ranking">BC17-计算表达式的值</a></h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">0</span>, b = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>, &amp;a, &amp;b);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d %d\n&quot;</span>, a / b, a % b);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="算术操作符"><a href="#算术操作符" class="headerlink" title="算术操作符"></a>算术操作符</h2><p>算术操作符没什么好说的，就是简单的四则运算，但会有一些初学时的误区</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">9</span>/<span class="number">2</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, a);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>结果是<code>4</code></p>
-<p>为什么不是4.5呢？是因为用的整型<code>int</code>吗？试着改成<code>float</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">float</span> a = <span class="number">9</span>/<span class="number">2</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%f\n&quot;</span>, a);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>结果是<code>4.0000</code></p>
-<p>已经都换成了浮点数，为什么还是不行呢？</p>
-<p>是因为<code>/</code>两边都是整数，就会进行整数除法，而两边任意一侧是小数，就会进行小数除法</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">float</span> a = <span class="number">9</span>/<span class="number">2.0</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%f\n&quot;</span>, a);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>结果是<code>4.5</code></p>
-<h2 id="位移操作符"><a href="#位移操作符" class="headerlink" title="位移操作符"></a>位移操作符</h2><p>位移操作符就是将数字转化成二进制位，在进行左移右移的操作符</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="type">int</span> b = a &lt;&lt; <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, b);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>结果是<code>4</code></p>
-<p>为什么呢？</p>
-<p>是因为，1个整形，相当于4个字节，而每个字节又相当于8bit，因此<code>2</code>这个整形相当于占用了32个字节，因此2在整形中二进制位的表示是，<code>00000000000000000000000000000010</code></p>
-<p><img src="https://img1.imgtp.com/2022/08/06/Qm1AUcBn.jpg" class="lazyload placeholder" data-srcset="https://img1.imgtp.com/2022/08/06/Qm1AUcBn.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
-<p>如图所示，所以结果是<code>4</code></p>
-<h2 id="赋值操作符"><a href="#赋值操作符" class="headerlink" title="赋值操作符"></a>赋值操作符</h2><p>理解起来很简单，可以进行复合赋值，直接展示</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">1</span>;</span><br><span class="line">    a = <span class="number">1</span> + <span class="number">1</span> 	<span class="comment">//完全等于 a += 1</span></span><br><span class="line">    			<span class="comment">//以此类推</span></span><br></pre></td></tr></table></figure>
-
-<p>单目操作符</p>
-<p>单目操作符就是只需要有1个操作数的操作符，因此我们之前看到的那些就可以称为，双目操作符</p>
-<h3 id="！逻辑反操作"><a href="#！逻辑反操作" class="headerlink" title="！逻辑反操作"></a>！逻辑反操作</h3><p><code>真变假，假变真</code></p>
-<p>在C语言中，<code>0为假，非0为真</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, !a);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>因此，输出结果是<code>0</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, !a);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出结果为<code>1</code></p>
 
       </div>
       <div class="post-tags-categories">
@@ -643,7 +594,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>文章链接:  </strong>
-    <a href="/2022/08/05/C-Day7/" target="_blank" title="C-Day7">http://example.com/2022/08/05/C-Day7/</a>
+    <a href="/2022/08/07/homework-Lesson-2/" target="_blank" title="homework-Lesson-2">http://example.com/2022/08/07/homework-Lesson-2/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明:   </strong>
@@ -661,40 +612,30 @@
 
 
 
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="/medias/3.jpg" class="lazyload placeholder" data-srcset="/medias/3.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-    </div>
-    <a href="/2022/08/07/homework-Lesson-2/" class="post-nav-link">
-      <div class="title">
-        <i class="fas fa-angle-left"></i> 上一篇:
-        <div class="title-text">homework-Lesson-2</div>
-      </div>
-      
-      <!-- <div class="content">
-        求两个数的较大值123456789101112131415161718#define _CRT_SECURE_NO_WA
-      </div> -->
-    </a>
-  </div>
-
 
 
   
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="/medias/5.jpg" class="lazyload placeholder" data-srcset="/medias/5.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="/medias/4.jpg" class="lazyload placeholder" data-srcset="/medias/4.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
     </div>
-    <a href="/2022/07/29/C-Day6/" class="post-nav-link">
+    <a href="/2022/08/05/C-Day7/" class="post-nav-link">
       <div class="title">
         下一篇: <i class="fas fa-angle-right"></i>
-        <div class="title-text">C语言 Day6</div>
+        <div class="title-text">C-Day7</div>
       </div>
       <!-- <div class="content">
-        初识选择语句提供选择的语句
-12345678910111213141516int main()&#123;    int
+        初识操作符
+算术操作符
+
+1+  -  *  /  %(取余)
+
+
+位移操作符
+
+1&gt;&gt; &lt;&lt;
+
       </div> -->
     </a>
   </div>
