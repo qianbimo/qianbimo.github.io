@@ -571,7 +571,57 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        
+        <h1 id="初始指针"><a href="#初始指针" class="headerlink" title="初始指针"></a>初始指针</h1><blockquote>
+<p>内存</p>
+</blockquote>
+<p>内存是电脑上特别重要的存储器，计算机中所有程序的运行都是在内存中进行的</p>
+<p>所以为了有效地使用内存，就把内存划分成一个个小的内存单元，每个内存单元的大小是<strong>1个字节</strong></p>
+<p>为了能够有效的访问到内存的每个单元，就给内存单元进行了编号，这些编号被称为该<strong>内存单元的地址</strong></p>
+<p> 内存可以类比成现实生活中的空间，如果想要找到一个地方，我们就需要知道对应的地址 </p>
+<p> 此时有两个问题</p>
+<blockquote>
+<p>1.内存是怎么编号的</p>
+<p>2.一个这样的内存单元会占用多大的空间 </p>
+</blockquote>
+<h2 id="1-内存是怎么编号的"><a href="#1-内存是怎么编号的" class="headerlink" title="1.内存是怎么编号的"></a>1.内存是怎么编号的</h2><p>在讨论计算机是会考虑计算机时32位还是64位</p>
+<p>二者指的是什么意思</p>
+<p><strong>32位 - 32根地址线 - 物理线 - 通电 - 1&#x2F;0</strong></p>
+<p><strong>64位 - 64根地址线 - 物理线 - 通电 - 1&#x2F;0</strong></p>
+<p>再通过电信号转换成数字信息：1和0组成的二进制序列</p>
+<p>如果是32位</p>
+<p><img src="https://img1.imgtp.com/2022/09/13/9jWwpLuh.png" class="lazyload placeholder" data-srcset="https://img1.imgtp.com/2022/09/13/9jWwpLuh.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
+<p>经过排列组合会有2^32次方个序列，这些序列都可以<strong>作为内存编号</strong>，而这些编号就可以被<strong>称为内存单元的地址</strong></p>
+<h2 id="2-一个内存单元会占用多大的空间"><a href="#2-一个内存单元会占用多大的空间" class="headerlink" title="2.一个内存单元会占用多大的空间"></a>2.一个内存单元会占用多大的空间</h2><p>我们可以通过假设法来猜测下</p>
+<p>在32位操作系统下，已知可以有<code>2的32次方</code>个内存单元 ，也就是<code>4,294,967,296</code>个，假设每个单元占用<code>1bit</code>，那么经过转换，就会占用0.5GB的内存，管理的空间就会很小，而且一个bit就给一个地址，那么占用1个byte的char就会有8个bit也就是8个地址，太过于详细</p>
+<p>经过研究讨论后，发现一个内存单元占用<strong>1个Byte</strong>是最好不过的</p>
+ <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> a = <span class="number">10</span>;<span class="comment">//a在内存中分配空间需要占用4个字节</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当我们想要知道a存储的地址时，可以选择 F10 - 调试 - 窗口 - 内存&#x2F;监视，为了方便观察可以将列改成4</p>
+<p><img src="https://img1.imgtp.com/2022/09/13/J54xGVAr.png" class="lazyload placeholder" data-srcset="https://img1.imgtp.com/2022/09/13/J54xGVAr.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> a = <span class="number">10</span>;<span class="comment">//a在内存中分配空间需要占用4个字节</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%p\n&quot;</span>, &amp;a);<span class="comment">//%p 专门用来打印地址的//但是发现每次的打印结果都不同</span></span><br><span class="line">    <span class="type">int</span> * pa = &amp;a;<span class="comment">//pa是用来存放地址的，在C语言中pa就叫做指针变量</span></span><br><span class="line">    <span class="comment">// * 说明 pa是指针变量</span></span><br><span class="line">    <span class="comment">// int 说明pa执行的对象是int类型的</span></span><br><span class="line">    </span><br><span class="line">    <span class="type">char</span> ch = <span class="string">&#x27;w&#x27;</span>;</span><br><span class="line">    <span class="type">char</span> * pc = &amp;ch;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当我们知道<code>a</code>的地址之后，也是为了方便以后能够快速的找到<code>a</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line">    <span class="type">int</span>* pa = &amp;a;</span><br><span class="line">    *pa = <span class="number">20</span>;<span class="comment">//* 解引用操作符 *pa就是通过pa里面的地址，找到a</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, a);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果是20</p>
+<p>指针变量的空间大小</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="keyword">sizeof</span>(<span class="type">char</span>*));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="keyword">sizeof</span>(<span class="type">short</span>*));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="keyword">sizeof</span>(<span class="type">long</span>*));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="keyword">sizeof</span>(<span class="type">int</span>*));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="keyword">sizeof</span>(<span class="type">long</span> <span class="type">long</span>*));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="keyword">sizeof</span>(<span class="type">float</span>*));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="keyword">sizeof</span>(<span class="type">double</span>*));</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>发现结果都是一样的</p>
+<p><strong>为什么呢？</strong></p>
+<p>因为指针是用来存放地址的，所以指针的空间大小取决于地址的存储需要多大空间</p>
+<p>但是这个结果会因为计算机的位数<strong>不同而不同</strong></p>
+<p>32位 32bit - 4byte - 一个地址</p>
+<p>64位 64bit - 8byte - 一个地址</p>
+<h1 id="初识结构体"><a href="#初识结构体" class="headerlink" title="初识结构体"></a>初识结构体</h1><p>结构体是C语言中特别重要的知识点，结构体是的C语言有能力描述复杂类型</p>
+<p>几条狗提也可以让C语言创建新的类型出来</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建一个学生</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">stu</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">char</span> name [<span class="number">20</span>];<span class="comment">//成员变量</span></span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line">    <span class="type">double</span> score;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建一个书的类型</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">book</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">char</span> name [<span class="number">20</span>]:</span><br><span class="line">    <span class="type">int</span> age ;</span><br><span class="line">    <span class="type">double</span> score;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">stu</span> <span class="title">s</span> =</span> &#123;<span class="string">&quot;张三&quot;</span>, <span class="number">20</span> ,<span class="number">85.5</span>&#125;;<span class="comment">//结构体的创建和初始化</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;1: %s %d %lf\n&quot;</span>, s.name , s.age , s.score);<span class="comment">//结构体变量.成员变量</span></span><br><span class="line">    </span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">stu</span> * <span class="title">ps</span> =</span> &amp;s;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;2: %s %d %lf\n&quot;</span>, (*ps).name , (*ps).age , (*ps).score);<span class="comment">//费劲</span></span><br><span class="line">           </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;3: %s %d %lf\n&quot;</span>, ps-&gt;name, ps-&gt;age, ps-&gt;score);</span><br><span class="line">    <span class="comment">//-&gt;作用: 结构体指针-&gt;成员变量名</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
       </div>
       <div class="post-tags-categories">
         
@@ -601,6 +651,31 @@
 <div class="post-nav">
 
 
+
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="/medias/3.jpg" class="lazyload placeholder" data-srcset="/medias/3.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+    </div>
+    <a href="/2022/09/13/C-Day11/" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> 上一篇:
+        <div class="title-text">C-Day11</div>
+      </div>
+      
+      <!-- <div class="content">
+        分支语句和循环语句
+C语言是结构化的程序设计语言有顺序结构，选择结构，循环结构三种结构
+
+分支语句
+
+
+if
+switc
+      </div> -->
+    </a>
+  </div>
 
 
 
