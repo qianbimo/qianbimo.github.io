@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>归档 | qianbimo&#39;s blog</title>
+  <title>深度学习入门（一）手写数字识别 | qianbimo&#39;s blog</title>
 
   <link rel="icon" type="image/png" href="/medias/favicon.png">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -519,280 +519,545 @@
     
 </header>
         <!-- 内容区域 -->
-        <div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"></div>
-<div class="bg-light-floor-archive" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -3;"></div>
-<div class="archive-header" style="background-image:url('https://pic1.zhimg.com/80/v2-1414b3a4b205e19060db18a20d08723a_1440w.jpg?source=1940ef5c')">
-  <div class="archive-header-title">
-    archive
-  </div>
-  <div class="archive-header-desc">
+        
+ <!-- prismjs 代码高亮 -->
+ 
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('/medias/8.jpg')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
-  <span class="title" id="archive-header-desc"></span>
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        深度学习入门（一）手写数字识别
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> 发表于：2023-03-22 |
+        </span>
+      
+
+      
+
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content row justify-position" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <p>本次手写数字识别参考的是<a target="_blank" rel="noopener" href="https://michaelnielsen.org/">Michael Nielsen</a>大佬写的 <a target="_blank" rel="noopener" href="http://neuralnetworksanddeeplearning.com/">Neural Networks and Deep Learning</a> 来实现的，由于本书的代码都是由 Python 2.0 编写而成，因此这次我打算使用 Python 3.9 来进行源代码的修改，之后再去实现手写数字识别</p>
+<h1 id="期望实现的目标"><a href="#期望实现的目标" class="headerlink" title="期望实现的目标"></a>期望实现的目标</h1><ul>
+<li><del>通过Python3.9实现手写数字识别的基本代码</del></li>
+<li><del>基于以上代码实现出一个较为精确的模型并产生可视化函数</del></li>
+<li>实现在每次返回后随机抽取9个图片显示，并在上方显示出识别出的数字结果</li>
+<li>基于模型的基础上，做出一套可以通过识别自己笔迹，实时输出的手写数字识别系统</li>
+</ul>
+<h1 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h1><h2 id="MNIST数据库"><a href="#MNIST数据库" class="headerlink" title="MNIST数据库"></a>MNIST数据库</h2><p>MNIST 数据集可在 <a target="_blank" rel="noopener" href="http://yann.lecun.com/exdb/mnist/">获取</a>, 它包含了四个部分:</p>
+<ul>
+<li><strong>Training set images</strong>: train-images-idx3-ubyte.gz (9.9 MB, 解压后 47 MB, 包含 60,000 个样本)</li>
+<li><strong>Training set labels</strong>: train-labels-idx1-ubyte.gz (29 KB, 解压后 60 KB, 包含 60,000 个标签)</li>
+<li><strong>Test set images</strong>: t10k-images-idx3-ubyte.gz (1.6 MB, 解压后 7.8 MB, 包含 10,000 个样本)</li>
+<li><strong>Test set labels</strong>: t10k-labels-idx1-ubyte.gz (5KB, 解压后 10 KB, 包含 10,000 个标签)</li>
+</ul>
+<p>和其他的手写数字识别一样，都是用 Training 中的 60000 个样本进行训练，再用 Test 中的 10000 个样本进行验证</p>
+<h2 id="Numpy-的-Python-库"><a href="#Numpy-的-Python-库" class="headerlink" title="Numpy 的 Python 库"></a>Numpy 的 Python 库</h2><p>如果你没有安装过 Anaconda ，那我强烈建议你去安装，因为真的是太方便了。</p>
+<p>如果没有的话也可以在这里<a target="_blank" rel="noopener" href="https://scipy.org/install/">下载</a></p>
+<h1 id="神经网络搭建"><a href="#神经网络搭建" class="headerlink" title="神经网络搭建"></a>神经网络搭建</h1><h2 id="神经网络代码的核心特征"><a href="#神经网络代码的核心特征" class="headerlink" title="神经网络代码的核心特征"></a>神经网络代码的核心特征</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Network</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, sizes</span>):</span><br><span class="line">        self.num_layers = <span class="built_in">len</span>(sizes)</span><br><span class="line">        self.sizes = sizes</span><br><span class="line">        <span class="comment"># 偏置的随机初始化</span></span><br><span class="line">        self.biases = [np.random.randn(y, <span class="number">1</span>) <span class="keyword">for</span> y <span class="keyword">in</span> sizes[<span class="number">1</span>:]]</span><br><span class="line">        <span class="comment"># 权重的随机初始化</span></span><br><span class="line">        self.weights = [np.random.randn(y, x)</span><br><span class="line">                        <span class="keyword">for</span> x, y <span class="keyword">in</span> <span class="built_in">zip</span>(sizes[:-<span class="number">1</span>], sizes[<span class="number">1</span>:])]</span><br></pre></td></tr></table></figure>
+
+<h3 id="代码解释："><a href="#代码解释：" class="headerlink" title="代码解释："></a>代码解释：</h3><h4 id="size列表"><a href="#size列表" class="headerlink" title="size列表"></a>size列表</h4><p>包含各层神经元。假如想要创建一个3层的神经网络，每层分别有2,3,1个神经元，则使用方法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net = Network([<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+
+<h4 id="np-random-randn"><a href="#np-random-randn" class="headerlink" title="np.random.randn()"></a>np.random.randn()</h4><p>是Numpy中的一员来⽣成均值为 0，标准差为 1 的高斯分布。这样就可以将我们所设置的神经网络对象，进行 w （权重），b (偏置) 进行随机初始化。</p>
+<h4 id="值得注意的是"><a href="#值得注意的是" class="headerlink" title="值得注意的是"></a>值得注意的是</h4><ol>
+<li>这个核心代码，默认情况为，第一层神经元均为输入层，并且不对这些神经元进行任何的偏置处理。</li>
+<li><code>net.weight[1]</code>是一个存储着链接二、三层神经元的权重。</li>
+</ol>
+<h2 id="定义S型函数"><a href="#定义S型函数" class="headerlink" title="定义S型函数"></a>定义S型函数</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid</span>(<span class="params">z</span>):</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1.0</span>/(<span class="number">1.0</span>+np.exp(-z))</span><br></pre></td></tr></table></figure>
+
+<p>PS:注意，当输入z 是⼀个向量或者 Numpy 数组时，Numpy 自动地按元素应用<code>sigmoid()</code> 函数。</p>
+<p><code>np.exp()</code>执行e^x^运算。</p>
+<h2 id="添加向前传播的行为方式"><a href="#添加向前传播的行为方式" class="headerlink" title="添加向前传播的行为方式"></a>添加向前传播的行为方式</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">feedforward</span>(<span class="params">self,a</span>):</span><br><span class="line">    <span class="keyword">for</span> b,w <span class="keyword">in</span> <span class="built_in">zip</span>(self.biases,self.weights):</span><br><span class="line">        a = sigmoid(np.dot(w,a)+b)</span><br></pre></td></tr></table></figure>
+
+<p>目的：为每一层都应用<br>$$<br>a^′ &#x3D; σ(wa + b)<br>$$<br> 这个公式</p>
+<p><code>np.dot()</code>函数是为了执行，线性代数中的矩阵乘法。</p>
+<h2 id="实现梯度下降学习的SGD方法"><a href="#实现梯度下降学习的SGD方法" class="headerlink" title="实现梯度下降学习的SGD方法"></a>实现梯度下降学习的SGD方法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">sgd</span>(<span class="params">self, training_data, epochs, mini_batch_size, eta, test_data=<span class="literal">None</span></span>):</span><br><span class="line">    accuracy_list = []</span><br><span class="line">    <span class="keyword">if</span> test_data:</span><br><span class="line">        n_test = <span class="built_in">len</span>(test_data)</span><br><span class="line">    n = <span class="built_in">len</span>(training_data)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(epochs):</span><br><span class="line">        random.shuffle(training_data)</span><br><span class="line">        mini_batches = [</span><br><span class="line">            training_data[k:k+mini_batch_size]</span><br><span class="line">            <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, n, mini_batch_size)]</span><br><span class="line">        <span class="keyword">for</span> mini_batch <span class="keyword">in</span> mini_batches:</span><br><span class="line">            <span class="comment"># 实现一次梯度下降</span></span><br><span class="line">            self.update_mini_batch(mini_batch, eta)</span><br><span class="line">        <span class="keyword">if</span> test_data:</span><br><span class="line">            <span class="comment"># 计算正确率</span></span><br><span class="line">            accuracy = self.evaluate(test_data) / n_test</span><br><span class="line">            accuracy_list.append(accuracy)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;Epoch <span class="subst">&#123;j&#125;</span>: <span class="subst">&#123;self.evaluate(test_data)&#125;</span> / <span class="subst">&#123;n_test&#125;</span>;&quot;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;Epoch <span class="subst">&#123;j&#125;</span> complete&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="定义参数："><a href="#定义参数：" class="headerlink" title="定义参数："></a>定义参数：</h3><ul>
+<li>self：指代类实例本身。</li>
+<li>training_data：包含了训练数据及其对应标签的列表。</li>
+<li>epochs：表示要遍历整个训练数据集的次数。</li>
+<li>mini_batch_size：表示每次迭代中使用的小批量样本的大小。</li>
+<li>eta：学习效率，用于控制梯度下降的步长。</li>
+<li>test_data：可选参数，包含了测试数据及其对应标签的列表。</li>
+</ul>
+<h3 id="实现步骤："><a href="#实现步骤：" class="headerlink" title="实现步骤："></a>实现步骤：</h3><ol>
+<li>如果提供了测试数据，则计算测试数据的数量<code>n_test</code>。</li>
+<li>对于每个<code>epoch</code>，将训练数据随机打乱。</li>
+<li>将打乱后的训练数据分割成小批量样本。</li>
+<li>对于每个小批量样本，使用<code>self.update_mini_batch</code>方法更新神经网络的权重和偏置。</li>
+<li>如果提供了测试数据，则在每个epoch结束时，使用<code>self.evaluate</code>方法计算神经网络在测试数据上的准确率，并打印输出。</li>
+<li>如果没有提供测试数据，则在每个epoch结束时，输出”Epoch {j} complete”。</li>
+</ol>
+<h2 id="实现小批量样本的更新"><a href="#实现小批量样本的更新" class="headerlink" title="实现小批量样本的更新"></a>实现小批量样本的更新</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">update_mini_batch</span>(<span class="params">self, mini_batch, eta</span>):</span><br><span class="line">    <span class="comment"># 存储偏置和权重的梯度</span></span><br><span class="line">	nabla_b = [np.zeros(b.shape) <span class="keyword">for</span> b <span class="keyword">in</span> self.biases]</span><br><span class="line">	nabla_w = [np.zeros(w.shape) <span class="keyword">for</span> w <span class="keyword">in</span> self.weights]</span><br><span class="line">	<span class="comment"># 分别计算每个样本的偏导数</span></span><br><span class="line">    <span class="keyword">for</span> x, y <span class="keyword">in</span> mini_batch:</span><br><span class="line">		delta_nabla_b, delta_nabla_w = self.backprop(x, y)</span><br><span class="line">		nabla_b = [nb+dnb <span class="keyword">for</span> nb, dnb <span class="keyword">in</span> <span class="built_in">zip</span>(nabla_b, delta_nabla_b)]</span><br><span class="line">		nabla_w = [nw+dnw <span class="keyword">for</span> nw, dnw <span class="keyword">in</span> <span class="built_in">zip</span>(nabla_w, delta_nabla_w)]</span><br><span class="line">    <span class="comment"># 函数实现</span></span><br><span class="line">	self.weights = [w-(eta/<span class="built_in">len</span>(mini_batch))*nw <span class="keyword">for</span> w, nw <span class="keyword">in</span> <span class="built_in">zip</span>(self.weights, nabla_w)]</span><br><span class="line">	self.biases = [b-(eta/<span class="built_in">len</span>(mini_batch))*nb <span class="keyword">for</span> b, nb <span class="keyword">in</span> <span class="built_in">zip</span>(self.biases, nabla_b)]</span><br></pre></td></tr></table></figure>
+
+<p>具体来说，该函数接收一个<code>mini_batch</code>（一个由训练样本和对应的标签组成的元组列表）、一个学习率eta作为输入，然后计算出该小批次样本的梯度并更新权重和偏置。</p>
+<p>该函数首先初始化了两个空列表<code>nabla_b</code>和<code>nabla_w</code>，用于存储偏置和权重的梯度。然后使用<code>backprop</code>方法计算每个样本的偏导数，并将它们累加到<code>nabla_b</code>和<code>nabla_w</code>中。</p>
+<p>接下来，该函数使用更新后的权重和偏置的公式，具体来说，对于每个权重和偏置，函数将其减去一个学习率（eta）乘以其对应的梯度（nabla_w和nabla_b），并除以<code>mini_batch</code>的大小<br>$$<br>w_k → w^′_k &#x3D; w_k − η\frac{∂C}{∂w_k}<br>$$</p>
+<p>$$<br>b_l → b^′_l &#x3D; b_l − η\frac{∂C}{∂b_l}<br>$$</p>
+<h2 id="反向传播-定义backprop"><a href="#反向传播-定义backprop" class="headerlink" title="反向传播 定义backprop()"></a>反向传播 定义backprop()</h2><p>是一种<strong>反向传播</strong>的算法，一种快速计算代价函数梯度的方法。在本函数中具体用来计算每个样本的偏置与权重的偏导数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">backprop</span>(<span class="params">self, x, y</span>):</span><br><span class="line">	nabla_b = [np.zeros(b.shape) <span class="keyword">for</span> b <span class="keyword">in</span> self.biases]</span><br><span class="line">	nabla_w = [np.zeros(w.shape) <span class="keyword">for</span> w <span class="keyword">in</span> self.weights]</span><br><span class="line">	<span class="comment"># 前向传播</span></span><br><span class="line">	activation = x</span><br><span class="line">	activations = [x]</span><br><span class="line">	zs = []</span><br><span class="line">	<span class="keyword">for</span> b, w <span class="keyword">in</span> <span class="built_in">zip</span>(self.biases, self.weights):</span><br><span class="line">		z = np.dot(w, activation)+b</span><br><span class="line">		zs.append(z)</span><br><span class="line">		activation = sigmoid(z)</span><br><span class="line">		activations.append(activation)</span><br><span class="line">	<span class="comment"># 反向传播</span></span><br><span class="line">	delta = self.cost_derivative(activations[-<span class="number">1</span>], y) * \sigmoid_prime(zs[-<span class="number">1</span>])</span><br><span class="line">    nabla_b[-<span class="number">1</span>] = delta</span><br><span class="line">    nabla_w[-<span class="number">1</span>] = np.dot(delta, activations[-<span class="number">2</span>].transpose())</span><br><span class="line">    <span class="keyword">for</span> l <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, self.num_layers):</span><br><span class="line">        z = zs[-l]</span><br><span class="line">        sp = sigmoid_prime(z)</span><br><span class="line">        delta = np.dot(self.weights[-l+<span class="number">1</span>].transpose(), delta) * sp</span><br><span class="line">        nabla_b[-l] = delta</span><br><span class="line">        nabla_w[-l] = np.dot(delta, activations[-l-<span class="number">1</span>].transpose())</span><br><span class="line">        <span class="keyword">return</span> (nabla_b, nabla_w)</span><br></pre></td></tr></table></figure>
+
+<p>输入$x$ 和 $y$，并返回一个元组 <code>(nabla_b, nabla_w)</code>，表示代价函数 <code>C_x</code> 的梯度。其中 <code>nabla_b</code> 和 <code>nabla_w</code> 是逐层存储的 Numpy 数组列表，与 <code>self.biases</code> 和 <code>self.weights</code> 类似。<br>$$<br>a^l_j &#x3D; σ(\sum <em>k w^l</em>{jk}a^{l−1}_k + b^l_j)<br>$$</p>
+<p>$$<br>δ^l_j ≡\frac{∂C}{∂z^l_j}<br>$$</p>
+<p>首先，该函数进行前向传播计算，计算出每层的激活值<code>(activations[])</code>和加权输入值<code>(zs[])</code>，然后，函数计算输出层的误差（即 $\delta$），并使用误差反向传播算法来计算每层的误差。应用如上公式</p>
+<p>对于每一层，误差计算需要使用前一层的误差来计算，并且在计算时还需要使用该层的加权输入值和激活函数的导数。最后，函数返回 <code>nabla_b</code> 和 <code>nabla_w</code>，表示代价函数相对于每个偏置和权重的梯度。</p>
+<h2 id="神经网络评估"><a href="#神经网络评估" class="headerlink" title="神经网络评估"></a>神经网络评估</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">evaluate</span>(<span class="params">self, test_data</span>):</span><br><span class="line">    <span class="comment">#函数获取预测值中最大值所对应的类别标签，并将其与真实标签 y 组成元组</span></span><br><span class="line">    test_results = [(np.argmax(self.feedforward(x)), y) </span><br><span class="line">                    <span class="keyword">for</span> (x, y) <span class="keyword">in</span> test_data]</span><br><span class="line">    <span class="comment">#将相同的标签存入列表中</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">sum</span>(<span class="built_in">int</span>(x == y) <span class="keyword">for</span> (x, y) <span class="keyword">in</span> test_results)</span><br></pre></td></tr></table></figure>
+
+<h4 id="np-argmax"><a href="#np-argmax" class="headerlink" title="np.argmax()"></a>np.argmax()</h4><p><code>numpy.argmax(a, axis=None, out=None)</code></p>
+<p>函数功能，返回最大值的索引。</p>
+<p>若axis&#x3D;1，表明按行比较，输出每行中最大值的索引，若axis&#x3D;0，则输出每列中最大值的索引。</p>
+<p><code>test_results = [(np.argmax(self.feedforward(x)), y) for (x, y) in test_data]</code>：将测试数据中的每个样本 <code>x</code> 通过神经网络前向传播得到预测值，使用 <code>np.argmax()</code> 函数获取预测值中最大值所对应的类别标签，并将其与真实标签 <code>y</code> 组成元组，存入列表 <code>test_results</code> 中。</p>
+<p><code>return sum(int(x == y) for (x, y) in test_results)</code>：遍历 <code>test_results</code> 列表，如果预测值 <code>x</code> 与真实标签 <code>y</code> 相同，则将其转换为整数 <code>1</code>，否则为整数 <code>0</code>，最后将所有转换后的整数相加，得到正确分类的样本数，作为模型在测试数据上的准确率进行返回。</p>
+<h2 id="计算输出激活的偏导数向量"><a href="#计算输出激活的偏导数向量" class="headerlink" title="计算输出激活的偏导数向量"></a>计算输出激活的偏导数向量</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">cost_derivative</span>(<span class="params">self, output_activations, y</span>):</span><br><span class="line">    <span class="keyword">return</span> (output_activations-y)</span><br></pre></td></tr></table></figure>
+
+<h2 id="实现可视化函数"><a href="#实现可视化函数" class="headerlink" title="实现可视化函数"></a>实现可视化函数</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">plot_accuracy</span>(<span class="params">self, accuracy_list</span>):</span><br><span class="line">	plt.plot(<span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(accuracy_list) + <span class="number">1</span>), accuracy_list)</span><br><span class="line">	plt.title(<span class="string">&#x27;Accuracy during Training&#x27;</span>)</span><br><span class="line">	plt.xlabel(<span class="string">&#x27;Epoch&#x27;</span>)</span><br><span class="line">	plt.ylabel(<span class="string">&#x27;Accuracy&#x27;</span>)</span><br><span class="line">	plt.show()</span><br></pre></td></tr></table></figure>
+
+<h1 id="导入MNIST数据库"><a href="#导入MNIST数据库" class="headerlink" title="导入MNIST数据库"></a>导入MNIST数据库</h1><p>将下列代码单独存放在一个.py文件中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">import</span> gzip</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取文件</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">load_data</span>():</span><br><span class="line">    <span class="comment"># 下方修改文件路径</span></span><br><span class="line">    f = gzip.<span class="built_in">open</span>(<span class="string">&#x27;./data/mnist.pkl.gz&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>)</span><br><span class="line">    training_data, validation_data, test_data = pickle.load(f, encoding=<span class="string">&#x27;bytes&#x27;</span>)</span><br><span class="line">    f.close()</span><br><span class="line">    <span class="keyword">return</span> training_data, validation_data, test_data</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出文件各部分信息</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">load_data_wrapper</span>():</span><br><span class="line">    tr_d, va_d, te_d = load_data()</span><br><span class="line">    training_inputs = [np.reshape(x, (<span class="number">784</span>, <span class="number">1</span>)) <span class="keyword">for</span> x <span class="keyword">in</span> tr_d[<span class="number">0</span>]]</span><br><span class="line">    training_results = [vectorized_result(y) <span class="keyword">for</span> y <span class="keyword">in</span> tr_d[<span class="number">1</span>]]</span><br><span class="line">    training_data = <span class="built_in">list</span>(<span class="built_in">zip</span>(training_inputs, training_results))</span><br><span class="line">    validation_inputs = [np.reshape(x, (<span class="number">784</span>, <span class="number">1</span>)) <span class="keyword">for</span> x <span class="keyword">in</span> va_d[<span class="number">0</span>]]</span><br><span class="line">    validation_data = <span class="built_in">list</span>(<span class="built_in">zip</span>(validation_inputs, va_d[<span class="number">1</span>]))</span><br><span class="line">    test_inputs = [np.reshape(x, (<span class="number">784</span>, <span class="number">1</span>)) <span class="keyword">for</span> x <span class="keyword">in</span> te_d[<span class="number">0</span>]]</span><br><span class="line">    test_data = <span class="built_in">list</span>(<span class="built_in">zip</span>(test_inputs, te_d[<span class="number">1</span>]))</span><br><span class="line">    <span class="keyword">return</span> training_data, validation_data, test_data</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">vectorized_result</span>(<span class="params">j</span>):</span><br><span class="line">    e = np.zeros((<span class="number">10</span>, <span class="number">1</span>))</span><br><span class="line">    e[j] = <span class="number">1.0</span></span><br><span class="line">    <span class="keyword">return</span> e</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="结果展示"><a href="#结果展示" class="headerlink" title="结果展示"></a>结果展示</h1><p><img src="/..%5Cdata_img%5Cmnist%5Cresult_1.1.png" class="lazyload placeholder" data-srcset="/..%5Cdata_img%5Cmnist%5Cresult_1.1.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="result_1.1"></p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>本次实现的手写识别有几点不足：</p>
+<ol>
+<li>没能实现显示特征图和预测结果将其输出。（这点会在之后的学习中，进行增加）</li>
+<li>没能实现手写及时输出。（是未来可以学习去实现的一个目标，会在之后的学习当中去完善）</li>
+</ol>
+<p>出现以上几点问题的原因主要还是，学习的东西知之甚少，不能将一些功能写出，并为自己所用。</p>
+<p>个人感觉现在的已有代码身上，对增加测试数据和保存有些麻烦，之后会在空闲时间，通过使用pytorch，重新再写一份手写数字识别，并争取能够实现本次没能实现的两个目标。</p>
+
+      </div>
+      <div class="post-tags-categories">
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>作者:  </strong>qianbimo</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>文章链接:  </strong>
+    <a href="/2023/03/22/深度学习入门（一）手写数字识别/" target="_blank" title="深度学习入门（一）手写数字识别">http://example.com/2023/03/22/深度学习入门（一）手写数字识别/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明:   </strong>
+      本网站所有文章除特别声明外,均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      许可协议。转载请注明出处!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="/medias/15.jpg" class="lazyload placeholder" data-srcset="/medias/15.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+    </div>
+    <a href="/2023/02/06/icpc-Day1/" class="post-nav-link">
+      <div class="title">
+        下一篇: <i class="fas fa-angle-right"></i>
+        <div class="title-text">icpc-Day1</div>
+      </div>
+      <!-- <div class="content">
+        c
+哈希表的查找
+基本思想：记录的存贮位置与关键字之间存在对应关系，Loc(i)
+Hash(key)&#x3D;key 
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          你的赏识是我前进的动力
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="/medias/Ali_pay.jpg" class="lazyload placeholder" data-srcset="/medias/Ali_pay.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="/medias/Wechat_pay.jpg" class="lazyload placeholder" data-srcset="/medias/Wechat_pay.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <!-- 文章详情页右侧目录 -->
+
+  <div class="toc-aside">
+    <div class="toc-main">
+      <div class="toc-aside-title">
+        <i class="fas fa-list-ul" aria-hidden="true"></i><span>本文目录</span>
+        
+          <div class="toc-open-close">本文目录</div>
+        
+      </div>
+      <div class="toc-content">
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 手机端目录按钮 -->
+  <div id="toc-mobile-btn">
+    <i class="fas fa-list-ul" aria-hidden="true"></i>
+  </div>
+
+
+<script>
+  function closeToc(init) {
+    $(".toc-aside").css({'width': 0, 'padding': 0, 'transition': init ?  'noe' : 'width 0.3s' });
+    $(".toc-content").css({'width': 0});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
+    $(".main-content").css({'width': '75%', 'margin-left': 'auto', 'margin-right': 'auto',});
+  };
+  function openToc() {
+    $(".main-content").css({'width': '65%', 'margin-right': '10px', 'margin-left': 'calc(35% - 350px)'});
+    $(".toc-aside").css({'width': '300px', 'padding': '0 10px', 'transition': 'width 0.3s'});
+    $(".toc-content").css({'width': '300px'});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
+  }
+  function openBtnClickFn () {
+    let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
+    let open = eval('' || 'true');
+    openOrCloseBtn.click(function() {
+      if (open) {
+        closeToc();
+        open = false;
+      } else {
+        openToc();
+        open = true;
+      }
+    });
+  };
+  openBtnClickFn();
+  initCloseTocWidth(true);
+
+  function initCloseTocWidth(init) {
+    if (window.innerWidth >= 992) {
+      let isClose = false;
+      isClose && closeToc(init)
+    }
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    $(".toc-aside").css({'transition': 'no'});
+  })
+  document.addEventListener('pjax:complete', function () {
+    openBtnClickFn();
+  })
+  
+</script>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
   <script>
-  function typedFn() {
-    const el = '#archive-header-desc';
-    const type = 'archive';
-    let desc = '愿你如风，被人温柔以待'
-    var typed = new Typed(el, {
-      strings: [desc],
-      startDelay: 100,
-      typeSpeed: 100,
-      loop: true,
-      backSpeed: 50,
-      showCursor: true
-    });
-  }
-  typedFn();
-</script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
   
-  </div>
-  <div class="mask-box"></div>
-</div>
-
-<div class="archive-video">
-  <video class="full-video" autoplay loop muted>
-      <source style="width: 100%;height: 100vh;" src="/">
-  </video>
-  <div class="video-header-title">
-    archive
-  </div>
-  <div class="video-header-desc">
-  
-      <span class="title" id="archive-video-header-desc"></span>
-      <script>
-  function typedFn() {
-    const el = '#archive-video-header-desc';
-    const type = 'archive';
-    let desc = '愿你如风，被人温柔以待'
-    var typed = new Typed(el, {
-      strings: [desc],
-      startDelay: 100,
-      typeSpeed: 100,
-      loop: true,
-      backSpeed: 50,
-      showCursor: true
-    });
-  }
-  typedFn();
 </script>
-      
-  </div>
-  <div class="mask-box"></div>
-</div>
 
-<!-- hash算法 -->
-
-
-<div class="archive-main">
-  <section class="archive">
-    <div class="archive-content">
-      <ul class="post-archive">
-        
-        
-          
-            
-            <div class="year" data-aos="zoom-in-up">
-                <div class="bullet"></div>
-                <a href="/archives/2022">2022</a>
-            </div>
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2022/09/17/C-Day12/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="/medias/4.jpg" class="lazyload placeholder" data-srcset="/medias/4.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">09-17</span>
-              </div>
-              <a class="post-title" href="/2022/09/17/C-Day12/">C-Day12</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2022/09/13/C-Day11/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="/medias/3.jpg" class="lazyload placeholder" data-srcset="/medias/3.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">09-13</span>
-              </div>
-              <a class="post-title" href="/2022/09/13/C-Day11/">C-Day11</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2022/08/26/C-Day10/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="/medias/2.jpg" class="lazyload placeholder" data-srcset="/medias/2.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">08-26</span>
-              </div>
-              <a class="post-title" href="/2022/08/26/C-Day10/">C-Day10</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2022/08/25/C-Day9/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="/medias/6.jpg" class="lazyload placeholder" data-srcset="/medias/6.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">08-25</span>
-              </div>
-              <a class="post-title" href="/2022/08/25/C-Day9/">C-Day9</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2022/08/22/C-Day8/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="/medias/5.jpg" class="lazyload placeholder" data-srcset="/medias/5.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">08-22</span>
-              </div>
-              <a class="post-title" href="/2022/08/22/C-Day8/">C-Day8</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2022/08/07/homework-Lesson-2/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="/medias/3.jpg" class="lazyload placeholder" data-srcset="/medias/3.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">08-07</span>
-              </div>
-              <a class="post-title" href="/2022/08/07/homework-Lesson-2/">homework-Lesson-2</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2022/08/05/C-Day7/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="/medias/4.jpg" class="lazyload placeholder" data-srcset="/medias/4.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">08-05</span>
-              </div>
-              <a class="post-title" href="/2022/08/05/C-Day7/">C-Day7</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2022/07/29/C-Day6/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="/medias/5.jpg" class="lazyload placeholder" data-srcset="/medias/5.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">07-29</span>
-              </div>
-              <a class="post-title" href="/2022/07/29/C-Day6/">C语言 Day6</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2022/07/28/C-Day5/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="/medias/6.jpg" class="lazyload placeholder" data-srcset="/medias/6.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">07-28</span>
-              </div>
-              <a class="post-title" href="/2022/07/28/C-Day5/">C语言 Day5</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2022/07/26/c-Day4/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="/medias/7.jpg" class="lazyload placeholder" data-srcset="/medias/7.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">07-26</span>
-              </div>
-              <a class="post-title" href="/2022/07/26/c-Day4/">C语言 Day4</a>
-            </div>
-          </li>
-        
-      </ul>
-    </div>
-  </section>
-  <div class="w-70">
-    
-  <!-- <nav class="page-nav">
-    <a class="extend prev" rel="prev" href="/archives/">上一页</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/3/">下一页</a>
-  </nav> -->
-  <div class="page-nav">
-    
-      <a href="/archives/"
-         class="page-nav-pre">
-         <i class="fas fa-angle-left"></i><span class="ml-5">上一页</span>
-      </a>
-    
-    <div class="page-info">
-        <div class="page-info-text">2 / 3</div>
-    </div>
-    
-      <a href="/archives/page/3/"
-         class="page-nav-next">
-          <span class="mr-5">下一页</span><i class="fas fa-angle-right"></i>
-      </a>
-      
-  </div>
-
-  </div>
-</div>
 
       </main>
     </div>
